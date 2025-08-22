@@ -3,6 +3,7 @@ import osxmmkeys
 import mpd
 import socket
 import collections
+import os
 
 
 class Client(object):
@@ -13,6 +14,7 @@ class Client(object):
         def perform(fn):
             try:
                 fn() if self._connected else self._queue.append(fn)
+                os.system("tmux refresh-client -S")
             except mpd.MPDError as exc:
                 print(
                     "Got an exception while executing command '%s': %s" % (
