@@ -90,5 +90,5 @@ class Client(object):
 
         while self._running:
             self._mpd_client.status()  # Keep connection alive.
-            time.sleep(1)
+            time.sleep(15)
 
